@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: e387be2f7f87b9d4fbec67b9b7fd3a71
+timeCreated: 1506457886
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: b_avantbras_d
+    100002: b_avantbras_g
+    100004: b_bassin_d
+    100006: b_bassin_g
+    100008: b_bras_d
+    100010: b_bras_g
+    100012: b_cou
+    100014: b_cuisse_d
+    100016: b_cuisse_g
+    100018: b_doigt_d
+    100020: b_doigt_g
+    100022: b_epaule_d
+    100024: b_epaule_g
+    100026: b_head
+    100028: b_index_d
+    100030: b_index_g
+    100032: b_jambe_d
+    100034: b_jambe_g
+    100036: b_main_d
+    100038: b_main_g
+    100040: b_pied_bout_d
+    100042: b_pied_bout_g
+    100044: b_pied_d
+    100046: b_pied_g
+    100048: b_pouce_d
+    100050: b_pouce_g
+    100052: b_torse
+    100054: b_torse_haut
+    100056: b_ventre
+    100058: Base
+    100060: Box001
+    100062: c_bassin
+    100064: c_bassin001
+    100066: c_bras_d
+    100068: c_bras_g
+    100070: c_cou
+    100072: c_doigt_d
+    100074: c_doigt_g
+    100076: c_epaule_d
+    100078: c_epaule_g
+    100080: c_index_d
+    100082: c_index_g
+    100084: c_main_d
+    100086: c_main_g
+    100088: c_master
+    100090: c_pied_d
+    100092: c_pied_g
+    100094: c_pouce_d
+    100096: c_pouce_g
+    100098: c_tete
+    100100: c_torse
+    100102: c_ventre
+    100104: Circle001
+    100106: Circle002
+    100108: IK Chain001
+    100110: IK Chain002
+    100112: master
+    100114: //RootNode
+    100116: master 1
+    100118: veste001
+    400000: b_avantbras_d
+    400002: b_avantbras_g
+    400004: b_bassin_d
+    400006: b_bassin_g
+    400008: b_bras_d
+    400010: b_bras_g
+    400012: b_cou
+    400014: b_cuisse_d
+    400016: b_cuisse_g
+    400018: b_doigt_d
+    400020: b_doigt_g
+    400022: b_epaule_d
+    400024: b_epaule_g
+    400026: b_head
+    400028: b_index_d
+    400030: b_index_g
+    400032: b_jambe_d
+    400034: b_jambe_g
+    400036: b_main_d
+    400038: b_main_g
+    400040: b_pied_bout_d
+    400042: b_pied_bout_g
+    400044: b_pied_d
+    400046: b_pied_g
+    400048: b_pouce_d
+    400050: b_pouce_g
+    400052: b_torse
+    400054: b_torse_haut
+    400056: b_ventre
+    400058: Base
+    400060: Box001
+    400062: c_bassin
+    400064: c_bassin001
+    400066: c_bras_d
+    400068: c_bras_g
+    400070: c_cou
+    400072: c_doigt_d
+    400074: c_doigt_g
+    400076: c_epaule_d
+    400078: c_epaule_g
+    400080: c_index_d
+    400082: c_index_g
+    400084: c_main_d
+    400086: c_main_g
+    400088: c_master
+    400090: c_pied_d
+    400092: c_pied_g
+    400094: c_pouce_d
+    400096: c_pouce_g
+    400098: c_tete
+    400100: c_torse
+    400102: c_ventre
+    400104: Circle001
+    400106: Circle002
+    400108: IK Chain001
+    400110: IK Chain002
+    400112: master
+    400114: //RootNode
+    400116: master 1
+    400118: veste001
+    2300000: Box001
+    2300002: veste001
+    3300000: Box001
+    3300002: veste001
+    4300000: Base
+    4300002: Box001
+    4300004: veste001
+    6400000: veste001
+    7400000: Fisherman@Idle
+    7400002: Fisherman@start
+    7400004: Take 001
+    9500000: //RootNode
+    13700000: Base
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
