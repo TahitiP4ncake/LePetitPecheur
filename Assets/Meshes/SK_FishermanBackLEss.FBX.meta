@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 98056f81e67498140b0572dba625af94
+timeCreated: 1506581709
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: b_avantbras_d
+    100004: b_avantbras_g
+    100006: b_bassin_d
+    100008: b_bassin_g
+    100010: b_bras_d
+    100012: b_bras_g
+    100014: b_cou
+    100016: b_cuisse_d
+    100018: b_cuisse_g
+    100020: b_doigt_d
+    100022: b_doigt_g
+    100024: b_epaule_d
+    100026: b_epaule_g
+    100028: b_head
+    100030: b_index_d
+    100032: b_index_g
+    100034: b_jambe_d
+    100036: b_jambe_g
+    100038: b_main_d
+    100040: b_main_g
+    100042: b_pied_bout_d
+    100044: b_pied_bout_g
+    100046: b_pied_d
+    100048: b_pied_g
+    100050: b_pouce_d
+    100052: b_pouce_g
+    100054: b_torse
+    100056: b_torse_haut
+    100058: b_ventre
+    100060: Base
+    100062: c_bassin
+    100064: master
+    100066: master 1
+    100068: veste001
+    100070: veste
+    400000: //RootNode
+    400002: b_avantbras_d
+    400004: b_avantbras_g
+    400006: b_bassin_d
+    400008: b_bassin_g
+    400010: b_bras_d
+    400012: b_bras_g
+    400014: b_cou
+    400016: b_cuisse_d
+    400018: b_cuisse_g
+    400020: b_doigt_d
+    400022: b_doigt_g
+    400024: b_epaule_d
+    400026: b_epaule_g
+    400028: b_head
+    400030: b_index_d
+    400032: b_index_g
+    400034: b_jambe_d
+    400036: b_jambe_g
+    400038: b_main_d
+    400040: b_main_g
+    400042: b_pied_bout_d
+    400044: b_pied_bout_g
+    400046: b_pied_d
+    400048: b_pied_g
+    400050: b_pouce_d
+    400052: b_pouce_g
+    400054: b_torse
+    400056: b_torse_haut
+    400058: b_ventre
+    400060: Base
+    400062: c_bassin
+    400064: master
+    400066: master 1
+    400068: veste001
+    400070: veste
+    2300000: //RootNode
+    2300002: veste001
+    3300000: //RootNode
+    3300002: veste001
+    4300000: Base
+    4300002: veste001
+    4300004: veste
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Base
+    13700002: veste
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
