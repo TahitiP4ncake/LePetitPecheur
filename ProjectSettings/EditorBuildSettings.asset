@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Baba.unity
     guid: 80579fa2c831f2e419697dbe732e678a
+  - enabled: 1
+    path: Assets/Scenes/Baba 1.unity
+    guid: 000c335ccdf83bf41b86aa2a2c94e0d7
