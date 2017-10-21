@@ -36,7 +36,6 @@ public class Menu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             boutton.color = new Color(boutton.color.r, boutton.color.g, boutton.color.b, _alpha);
 
             yield return new WaitForSeconds(0.01f);
-            Debug.Log(_alpha);
         }
     }
 
