@@ -27,13 +27,22 @@ public class FishermanAnimator : MonoBehaviour {
     public GameObject bouchon;
     public GameObject message;
 
+    public GameObject radeau;
+
+    Vector3 origin;
+
+    public AnimationCurve x;
+    public AnimationCurve z;
+
+
     void PlayAnimation(AnimationState _animation)
     {
         anim.SetTrigger(_animation.ToString());
     }
 
-    private void Start()
+    void Start()
     {
+        origin = radeau.transform.eulerAngles;
         BouteilleOff();
     }
     void Update () 
@@ -53,6 +62,13 @@ public class FishermanAnimator : MonoBehaviour {
         {
             PlayAnimation(AnimationState.MessageOff);
         }
+
+        Tilt();
+    }
+
+    void Tilt()
+    {
+        radeau.transform.eulerAngles = new Vector3(origin.x + x.Evaluate(Time.time), origin.y,origin.z + z.Evaluate(Time.time));
     }
 
     void DrawFil()
