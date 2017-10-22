@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData eventData)
     {
         StopAllCoroutines();
-        StartCoroutine(FadeOut());
+        //StartCoroutine(FadeOut());
 
     }
 
