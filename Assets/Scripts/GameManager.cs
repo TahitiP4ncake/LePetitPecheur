@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	private Vector2 lastPosition;
 
-    private List<string> messages = new List<string>();
+    private List<string> allMessages = new List<string>();
 
     private List<string> randomMessages = new List<string>();
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 
     bool isBusy = false;
 
-    int nrbOfMessages;
+    int nbrOfMessages;
 
 
 
@@ -38,9 +38,14 @@ public class GameManager : MonoBehaviour {
 
 		Application.runInBackground = true;
 
-        messages = CSVReader.Read("Messages");
+        allMessages = CSVReader.Read("Messages");
 
         GetSavedData();
+
+        if(allMessages.Count != nbrOfMessages)
+        {
+            ActualizeMessagesList();
+        }
 
         PlayerPrefs.Save();
 
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour {
 
         for (int i = 0; i < _nbrMessages; i++)
         {
-            randomMessages.Add(PlayerPrefs.GetString("Message" + i));
+            randomMessages.Add(PlayerPrefs.GetString("RandomMessages" + i));
         }
 
         // Date
@@ -160,11 +165,15 @@ public class GameManager : MonoBehaviour {
                 if (canHaveMessage)
                 {
                     isBusy = true;
+
+                    GetNewMessage();
                 }
 
                 if (canHaveObject)
                 {
                     isBusy = true;
+
+                    GetNewObject();
                 }
             }
         }
@@ -177,6 +186,56 @@ public class GameManager : MonoBehaviour {
 
     void GetNewObject()
     {
+
+    }
+
+    void ActualizeMessagesList()
+    {
+        if (allMessages.Count < nbrOfMessages)
+        {
+            ResetMessages();
+        }
+        else
+        if (allMessages.Count > nbrOfMessages)
+        {
+            // Add new messages to the possibilities
+
+            List<string> _newMessages = new List<string>();
+
+            for(int i = nbrOfMessages+1; i<allMessages.Count; i++)
+            {
+                _newMessages.Add(allMessages[i]);
+            }
+
+        }
+
+        nbrOfMessages = randomMessages.Count;
+
+    }
+
+    // Fill the randomMessages with the message list, randomize
+    void ResetMessages()
+    {
+        randomMessages = new List<string>();
+
+        List<String> _temporaryList = new List<string>();
+
+        foreach(String _string in allMessages)
+        {
+            _temporaryList.Add(_string);
+        }
+
+        int _index;
+
+        for(int i = 0; i< _temporaryList.Count; i++)
+        {
+            _index = UnityEngine.Random.Range(0, _temporaryList.Count + 1);
+
+            randomMessages.Add(_temporaryList[_index]);
+
+            _temporaryList.RemoveAt(_index);
+
+        }
 
     }
 
@@ -222,11 +281,11 @@ public class GameManager : MonoBehaviour {
         }
 
         // Messages
-        /*
-        for (int i = 0; i < TotalInventoryItem; i++)
+        
+        for (int i = 0; i < randomMessages.Count ; i++)
         {
-            PlayerPrefs.SetString("InventoryItem" + i, "*insert your item value or name*");
+            PlayerPrefs.SetString("RandomMessages" + i, randomMessages[i]);
         }
-        */
+        
     }
 }
