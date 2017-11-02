@@ -34,8 +34,9 @@ public class FishermanAnimator : MonoBehaviour {
     public AnimationCurve x;
     public AnimationCurve z;
 
+    public MenuAnimation menu;
 
-    void PlayAnimation(AnimationState _animation)
+    public void PlayAnimation(AnimationState _animation)
     {
         anim.SetTrigger(_animation.ToString());
     }
@@ -52,6 +53,7 @@ public class FishermanAnimator : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.A))
         {
             PlayAnimation(AnimationState.Hook);
+           
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -112,6 +114,7 @@ public class FishermanAnimator : MonoBehaviour {
 
     void StockOn()
     {
+        menu.SwitchBottle();
         bouteilleFalse.transform.position = bouteilleTrue.transform.position;
         bouteilleFalse.transform.rotation = bouteilleTrue.transform.rotation;
         bouteilleFalse.transform.SetParent(null);
