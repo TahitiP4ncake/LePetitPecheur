@@ -1182,9 +1182,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220654453921192}
-  m_LocalRotation: {x: -0, y: 0.095526636, z: -0, w: 0.9954269}
-  m_LocalPosition: {x: -1.01, y: -1.74, z: -1.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.012689346, y: -0.7028812, z: -0.012542973, w: 0.7110835}
+  m_LocalPosition: {x: -0.33048952, y: -0.14533977, z: 0.00292813}
+  m_LocalScale: {x: 0.4233427, y: 0.9992649, z: 0.9999224}
   m_Children:
   - {fileID: 4031775889732442}
   - {fileID: 4029256024304146}
@@ -1878,6 +1878,86 @@ MonoBehaviour:
   bouteilleFalse: {fileID: 1513474087228808}
   bouchon: {fileID: 1424647387080442}
   message: {fileID: 1604512353340698}
+  radeau: {fileID: 0}
+  x:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.0036630034
+      inSlope: 0.8447972
+      outSlope: 0.8447972
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.7186708
+      value: 1.2625401
+      inSlope: 0.012791975
+      outSlope: 0.012791975
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 4.315645
+      value: -1.3628263
+      inSlope: 0.026654433
+      outSlope: 0.026654433
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 6.015519
+      value: 0.0036630034
+      inSlope: 1.2313955
+      outSlope: 1.2313955
+      tangentMode: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 0
+  z:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.0030884743
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.4883418
+      value: 0.284542
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 3.2596173
+      value: -0.4438761
+      inSlope: -0.044927
+      outSlope: -0.044927
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 5.4736958
+      value: 0.15788117
+      inSlope: 0.08255243
+      outSlope: 0.08255243
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 7.556946
+      value: -0.29603124
+      inSlope: -0.05632639
+      outSlope: -0.05632639
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 8.831511
+      value: 0.14527793
+      inSlope: 0.19684434
+      outSlope: 0.19684434
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 10.00057
+      value: 0.0030884743
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 0
+  menu: {fileID: 0}
 --- !u!120 &120148374590096530
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2111,8 +2191,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 4116517031445510}
   m_AABB:
-    m_Center: {x: 0.00000059604645, y: -0.14098167, z: 0.021144986}
-    m_Extent: {x: 0.56967026, y: 0.53154355, z: 0.2520926}
+    m_Center: {x: 0.00014349818, y: -0.1409542, z: 0.030088458}
+    m_Extent: {x: 0.57332057, y: 0.53324395, z: 0.27856687}
   m_DirtyAABB: 0
 --- !u!183 &183895747193426736
 Cloth:

@@ -30,6 +30,12 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (actionSelected == "Confirmation")
             menu.Quit();
+
+        if (actionSelected == "Bottle")
+        {
+            menu.Read();
+            
+        }
         //Debug.Log("The cursor clicked the selectable UI element.");
     }
 

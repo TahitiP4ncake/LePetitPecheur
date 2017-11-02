@@ -29,9 +29,15 @@ public class MenuAnimation : MonoBehaviour {
     public TextMeshProUGUI credit;
     public TextMeshProUGUI creditOver;
 
+    public GameObject bottle;
+
+    public TextMeshProUGUI action;
+
     public List<TextMeshProUGUI> texts;
 
     #endregion
+
+    public FishermanAnimator fisher;
 
     void Start()
     {
@@ -100,6 +106,10 @@ public class MenuAnimation : MonoBehaviour {
             case "Menu":
                 SwitchMenu();
                 break;
+
+            case "Bottle":
+                action.text = "read";
+                break;
         }
     }
 
@@ -133,6 +143,10 @@ public class MenuAnimation : MonoBehaviour {
                 quitConfirmation.SetActive(false);
                 quit.gameObject.SetActive(true);
                 break;
+
+            case "Bottle":
+                action.text = "";
+                break;
         }
 
         //Il manque comment cacher le menu, est-ce un timer ou alors quand on clique ailleurs ça le cache
@@ -142,6 +156,18 @@ public class MenuAnimation : MonoBehaviour {
     {
         //Application.Quit();
         print("Ferme l'application et sauvegarde la progression avant ça peut etre");
+    }
+
+    public void Read()
+    {
+        fisher.PlayAnimation(AnimationState.MessageOn);
+        action.text = "";
+        SwitchBottle();
+    }
+
+    public void SwitchBottle()
+    {
+        bottle.SetActive(!bottle.activeSelf);
     }
     
 }
