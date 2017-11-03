@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: b4af0e84c81e98c4e97ea6fd632bbdd3
+timeCreated: 1509719745
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _Atlas2: {fileID: 2800000, guid: 97cac9a7a1dad594f92f34e782df61fb, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,7 +10,8 @@ public class MenuAnimation : MonoBehaviour {
 
     public enum actionSelected { Help, Credit, Message, Music }
 
-    float timer;
+    //[HideInInspector]
+    public float timer;
     public float cooldown;
 
     #region Texts
@@ -20,7 +21,7 @@ public class MenuAnimation : MonoBehaviour {
 
     bool visible;
 
-    public GameObject quitConfirmation;
+    public TextMeshProUGUI quitConfirmation;
     public TextMeshProUGUI quit;
 
     public TextMeshProUGUI help;
@@ -43,6 +44,12 @@ public class MenuAnimation : MonoBehaviour {
 
     public float lerpSpeed;
 
+    [Space]
+
+    public TextMeshProUGUI message;
+
+    public TextMeshProUGUI messageConfirmation;
+
     #endregion
 
     public FishermanAnimator fisher;
@@ -53,7 +60,8 @@ public class MenuAnimation : MonoBehaviour {
         visible = true;
         SwitchMenu();
         */
-       
+
+        message.color = new Color(1, 1, 1, 0);
     }
 
     void Update()
@@ -64,6 +72,7 @@ public class MenuAnimation : MonoBehaviour {
             if (timer <= 0)
             {
                 timer = 0;
+                
                 SwitchMenu();
             }
         }
@@ -74,8 +83,13 @@ public class MenuAnimation : MonoBehaviour {
         switch (visible)
         {
             case false:
+               // print("faux");
                 visible = true;
                 menuHidden.SetActive(false);
+                foreach (TextMeshProUGUI _text in texts)
+                {
+                    StartCoroutine(FadeIn(_text));
+                }
                 menuVisible.SetActive(true);
                 for (int i = 0; i < 3; i++)
                 {
@@ -84,9 +98,18 @@ public class MenuAnimation : MonoBehaviour {
                 timer = cooldown;   
                 break;
             case true:
+                
                 visible = false;
-                menuHidden.SetActive(true);
-                menuVisible.SetActive(false);
+                
+                Hide("HelpOver");
+                Hide("CreditOver");
+
+                StartCoroutine(FadeOutSimple(credit));
+                StartCoroutine(FadeOutSimple(help));
+                StartCoroutine(FadeOutSimple(quit));
+
+                StartCoroutine(CloseMenu());  //Delay de la fermeture du menu
+
                 for (int i = 0; i < 3; i++)
                 {
                     StartCoroutine(DotOff(i));
@@ -117,8 +140,11 @@ public class MenuAnimation : MonoBehaviour {
                 break;
 
             case "Quit":
+                /*
                 quit.gameObject.SetActive(false);
                 quitConfirmation.SetActive(true);
+                */
+                StartCoroutine(FadeOut(quit, quitConfirmation));
                 break;
 
             case "Menu":
@@ -128,6 +154,7 @@ public class MenuAnimation : MonoBehaviour {
             case "Bottle":
                 action.text = "read";
                 break;
+           
         }
     }
 
@@ -155,12 +182,13 @@ public class MenuAnimation : MonoBehaviour {
                 break;
 
             case "Quit":
-                quit.text = "quit";
+                //quit.text = "quit";
                 break;
 
             case "Confirmation":
-                quitConfirmation.SetActive(false);
-                quit.gameObject.SetActive(true);
+                //quitConfirmation.gameObject.SetActive(false);
+                StartCoroutine(FadeOut(quitConfirmation, quit));
+                //quit.gameObject.SetActive(true);
                 break;
 
             case "Bottle":
@@ -169,7 +197,7 @@ public class MenuAnimation : MonoBehaviour {
         }
     }
 
-    public void Quit()
+    public void Quit() //need baba
     {
         //Application.Quit();
         print("Ferme l'application et sauvegarde la progression avant ça peut etre");
@@ -180,6 +208,27 @@ public class MenuAnimation : MonoBehaviour {
         fisher.PlayAnimation(AnimationState.MessageOn);
         action.text = "";
         SwitchBottle();
+    }
+
+    public IEnumerator Reading(string _message)
+    {
+        message.text = _message;
+        StartCoroutine(FadeIn(message));
+        yield return new WaitForSeconds(1);
+        messageConfirmation.gameObject.SetActive(true);
+        StartCoroutine(FadeIn(messageConfirmation));
+
+    }
+    public void FinishedReading()
+    {
+    
+        StartCoroutine(FadeOutSimple(messageConfirmation));
+        StartCoroutine(FadeOutSimple(message));
+        
+
+        
+        fisher.PlayAnimation(AnimationState.MessageOff);
+       
     }
 
     public void SwitchBottle() //active/desactive la hitbox pour lire le message 
@@ -209,8 +258,7 @@ public class MenuAnimation : MonoBehaviour {
 
     IEnumerator FadeIn(TextMeshProUGUI _text)
     {
-        print("Fade In");
-        //_text.color = new Color(1, 1, 1, 0);
+        _text.color = new Color(1, 1, 1, 0);
         _text.gameObject.SetActive(true);
 
         for (float i = 0; i < .3f; i+=Time.deltaTime)
@@ -220,6 +268,7 @@ public class MenuAnimation : MonoBehaviour {
         }
         //_text.color = new Color(1, 1, 1, 1);
     }
+
     IEnumerator FadeOut(TextMeshProUGUI _text, TextMeshProUGUI nextText)
     {
         for (float i = 0; i < .3f; i += Time.deltaTime)
@@ -231,5 +280,25 @@ public class MenuAnimation : MonoBehaviour {
         _text.gameObject.SetActive(false);
 
         StartCoroutine(FadeIn(nextText));
+    }
+
+    IEnumerator FadeOutSimple(TextMeshProUGUI _text)
+    {
+        for (float i = 0; i < .3f; i += Time.deltaTime)
+        {
+            _text.color = new Color(1, 1, 1, 1 - (1 / .3f) * i);
+            yield return new WaitForEndOfFrame();
+        }
+        _text.color = new Color(1, 1, 1, 0);
+        _text.gameObject.SetActive(false);
+
+    }
+
+    IEnumerator CloseMenu()
+    {
+        yield return new WaitForSeconds(.3f);
+        timer = 0;
+        menuHidden.SetActive(true);
+        menuVisible.SetActive(false);
     }
 }
