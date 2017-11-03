@@ -14,7 +14,7 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (actionSelected != "Quit" && actionSelected != "Confirmation" && actionSelected!="Menu")
             menu.Show(actionSelected);
-        //Debug.Log("The cursor entered the selectable UI element.");
+        //Debug.Log(actionSelected);
     }
 
     public void OnPointerExit(PointerEventData eventData)

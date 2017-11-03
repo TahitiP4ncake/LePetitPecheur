@@ -35,14 +35,24 @@ public class MenuAnimation : MonoBehaviour {
 
     public List<TextMeshProUGUI> texts;
 
+    public List<GameObject> dots;
+    public List<GameObject> dotOrigin;
+    public List<GameObject> dotTarget;
+
+    [Space]
+
+    public float lerpSpeed;
+
     #endregion
 
     public FishermanAnimator fisher;
 
     void Start()
     {
+        /*
         visible = true;
         SwitchMenu();
+        */
        
     }
 
@@ -67,13 +77,21 @@ public class MenuAnimation : MonoBehaviour {
                 visible = true;
                 menuHidden.SetActive(false);
                 menuVisible.SetActive(true);
+                for (int i = 0; i < 3; i++)
+                {
+                    StartCoroutine(DotOn(i));
+                }
                 timer = cooldown;   
                 break;
             case true:
                 visible = false;
                 menuHidden.SetActive(true);
                 menuVisible.SetActive(false);
-                
+                for (int i = 0; i < 3; i++)
+                {
+                    StartCoroutine(DotOff(i));
+                }
+
                 break;
         }
     }
@@ -87,15 +105,15 @@ public class MenuAnimation : MonoBehaviour {
             case "Help":
 
                 // help.text = "a new message each day, be patient";
-                help.gameObject.SetActive(false);
-                helpOver.gameObject.SetActive(true);
+                
+                StartCoroutine(FadeOut(help,helpOver));
                 break;
 
             case "Credit":
 
                 // credit.text = "a companion by baba and dodo";
-                credit.gameObject.SetActive(false);
-                creditOver.gameObject.SetActive(true);
+
+                StartCoroutine(FadeOut(credit,creditOver));
                 break;
 
             case "Quit":
@@ -119,18 +137,19 @@ public class MenuAnimation : MonoBehaviour {
 
         switch (_action)
         {
-            case "Help":
+            case "HelpOver":
 
-                help.gameObject.SetActive(true);
-                helpOver.gameObject.SetActive(false);
+                StartCoroutine(FadeOut(helpOver,help));
+                
+                
 
                 //help.text = "help";
                 break;
 
-            case "Credit":
+            case "CreditOver":
 
-                credit.gameObject.SetActive(true);
-                creditOver.gameObject.SetActive(false);
+               
+                StartCoroutine(FadeOut(creditOver,credit));
 
                 //credit.text = "credit";
                 break;
@@ -148,8 +167,6 @@ public class MenuAnimation : MonoBehaviour {
                 action.text = "";
                 break;
         }
-
-        //Il manque comment cacher le menu, est-ce un timer ou alors quand on clique ailleurs ça le cache
     }
 
     public void Quit()
@@ -158,16 +175,61 @@ public class MenuAnimation : MonoBehaviour {
         print("Ferme l'application et sauvegarde la progression avant ça peut etre");
     }
 
-    public void Read()
+    public void Read() // quand on clique sur le joueur et qu'un message a été reçu
     {
         fisher.PlayAnimation(AnimationState.MessageOn);
         action.text = "";
         SwitchBottle();
     }
 
-    public void SwitchBottle()
+    public void SwitchBottle() //active/desactive la hitbox pour lire le message 
     {
         bottle.SetActive(!bottle.activeSelf);
     }
-    
+
+    IEnumerator DotOn(int _index)
+    {
+        for (float i = 0; i < 1;)
+        {
+            dots[_index].transform.position = Vector3.Lerp(dotOrigin[_index].transform.position, dotTarget[_index].transform.position, i);
+            i += Time.deltaTime*lerpSpeed;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator DotOff(int _index)
+    {
+        for (float i = 0; i < 1;)
+        {
+            dots[_index].transform.position = Vector3.Lerp(dotTarget[_index].transform.position, dotOrigin[_index].transform.position, i);
+            i += Time.deltaTime* lerpSpeed;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator FadeIn(TextMeshProUGUI _text)
+    {
+        print("Fade In");
+        //_text.color = new Color(1, 1, 1, 0);
+        _text.gameObject.SetActive(true);
+
+        for (float i = 0; i < .3f; i+=Time.deltaTime)
+        {
+            _text.color = new Color(1, 1, 1, (1 / .3f) * i);
+            yield return new WaitForEndOfFrame();
+        }
+        //_text.color = new Color(1, 1, 1, 1);
+    }
+    IEnumerator FadeOut(TextMeshProUGUI _text, TextMeshProUGUI nextText)
+    {
+        for (float i = 0; i < .3f; i += Time.deltaTime)
+        {
+            _text.color = new Color(1, 1, 1, 1-(1 / .3f) * i);
+            yield return new WaitForEndOfFrame();
+        }
+        _text.color = new Color(1, 1, 1, 0);
+        _text.gameObject.SetActive(false);
+
+        StartCoroutine(FadeIn(nextText));
+    }
 }
