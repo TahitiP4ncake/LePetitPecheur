@@ -12,9 +12,13 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (actionSelected != "Quit" && actionSelected != "Confirmation" && actionSelected!="Menu")
+        if (actionSelected != "Quit" && actionSelected != "Confirmation" && actionSelected!="Menu" && actionSelected != "MessageFinished")
             menu.Show(actionSelected);
         //Debug.Log(actionSelected);
+        if(actionSelected =="Quit")
+        {
+            menu.timer = 0;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -25,7 +29,7 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(actionSelected =="Quit" || actionSelected=="Menu")
+        if(actionSelected =="Quit" || actionSelected=="Menu" )
         menu.Show(actionSelected);
 
         if (actionSelected == "Confirmation")
@@ -36,7 +40,11 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             menu.Read();
             
         }
-        //Debug.Log("The cursor clicked the selectable UI element.");
+        if( actionSelected == "MessageFinished")
+        {
+            menu.FinishedReading();
+        }
+        
     }
 
 }

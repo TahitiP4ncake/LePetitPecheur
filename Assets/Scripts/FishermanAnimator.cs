@@ -135,4 +135,9 @@ public class FishermanAnimator : MonoBehaviour {
         bouchon.SetActive(true);
         message.SetActive(true);
     }
+
+    void Reading()
+    {
+        StartCoroutine(menu.Reading("This is a test message"));
+    }
 }
