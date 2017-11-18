@@ -36,9 +36,20 @@ public class FishermanAnimator : MonoBehaviour {
 
     public MenuAnimation menu;
 
-    public void PlayAnimation(AnimationState _animation)
+    [Space]
+
+    public GameManager manager;
+
+    public string messageToDisplay;
+
+    public void PlayAnimation(AnimationState _animation, string _message ="")
     {
         anim.SetTrigger(_animation.ToString());
+
+        if (_message != "")
+        {
+            messageToDisplay = _message;
+        }
     }
 
     void Start()
@@ -48,13 +59,15 @@ public class FishermanAnimator : MonoBehaviour {
     }
     void Update () 
 	{
-        DrawFil();
+        DrawFil(); //line renderer fil de peche
 
+        /*
 		if(Input.GetKeyDown(KeyCode.A))
         {
             PlayAnimation(AnimationState.Hook);
            
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -79,7 +92,9 @@ public class FishermanAnimator : MonoBehaviour {
         fil.SetPosition(1, filTail.transform.position);
     }
 
-     void CanneOn()
+    #region Activate/Desactivate Objects
+
+    void CanneOn()
     {
         canneFalse.transform.position = canneTrue.transform.position;
         canneFalse.transform.rotation = canneTrue.transform.rotation;
@@ -97,21 +112,41 @@ public class FishermanAnimator : MonoBehaviour {
         canneTrue.SetActive(false);
         canneFalse.SetActive(true);
     }
+    
+    void ActivateBouteille(bool _activate)
+    {
+        bouteilleTrue.SetActive(_activate);
+        bouchon.SetActive(_activate);
+        message.SetActive(_activate);
+    }
 
-     void BouteilleOn()
+
+    /// <summary>
+    /// Activates the bottle, bottle cap and the message (meshes).
+    /// </summary>
+     void BouteilleOn()  
     {
         bouteilleTrue.SetActive(true);
         bouchon.SetActive(true);
         message.SetActive(true);
     }
 
-     void BouteilleOff()
+    /// <summary>
+    /// Desactivates the bottle, bottle cap and the message (meshes).
+    /// </summary>
+    void BouteilleOff()
     {
         bouteilleTrue.SetActive(false);
         bouchon.SetActive(false);
         message.SetActive(false);
+
+        manager.NotBusyAnymore();
     }
 
+    /// <summary>
+    /// Sets the position of the non-animated bottle on the boat and sets its parent to world.
+    /// And hides the animated bottle.
+    /// </summary>
     void StockOn()
     {
         menu.SwitchBottle();
@@ -136,8 +171,10 @@ public class FishermanAnimator : MonoBehaviour {
         message.SetActive(true);
     }
 
+    #endregion
+
     void Reading()
     {
-        StartCoroutine(menu.Reading("This is a test message"));
+        StartCoroutine(menu.Reading(messageToDisplay));
     }
 }

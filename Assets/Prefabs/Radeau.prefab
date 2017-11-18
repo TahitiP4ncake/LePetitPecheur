@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 4364976620306172}
   - component: {fileID: 95787209121942928}
   m_Layer: 0
-  m_Name: KN_radio
+  m_Name: KM_Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2504,6 +2504,8 @@ MonoBehaviour:
     m_PostInfinity: 1
     m_RotationOrder: 0
   menu: {fileID: 0}
+  manager: {fileID: 0}
+  messageToDisplay: 
 --- !u!120 &120266471246214276
 LineRenderer:
   m_ObjectHideFlags: 1

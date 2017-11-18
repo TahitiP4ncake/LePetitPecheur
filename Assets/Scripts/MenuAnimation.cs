@@ -12,7 +12,7 @@ public class MenuAnimation : MonoBehaviour {
 
     //[HideInInspector]
     public float timer;
-    public float cooldown;
+    public float timerMax;
 
     #region Texts
 
@@ -64,15 +64,16 @@ public class MenuAnimation : MonoBehaviour {
         message.color = new Color(1, 1, 1, 0);
     }
 
-    void Update()
+    IEnumerator WaitBeforeClosingMenu()
     {
-        if (timer > 0)
+        while(timer>0)
         {
-            timer -= Time.deltaTime;
+            yield return new WaitForSeconds(0.01f);
+            timer -= 0.01f;
             if (timer <= 0)
             {
                 timer = 0;
-                
+
                 SwitchMenu();
             }
         }
@@ -95,7 +96,10 @@ public class MenuAnimation : MonoBehaviour {
                 {
                     StartCoroutine(DotOn(i));
                 }
-                timer = cooldown;   
+                timer = timerMax;
+
+                StartCoroutine(WaitBeforeClosingMenu());
+
                 break;
             case true:
                 
@@ -160,7 +164,7 @@ public class MenuAnimation : MonoBehaviour {
 
     public void Hide(string _action)
     {
-        timer = cooldown;
+        timer = timerMax;
 
         switch (_action)
         {
@@ -199,8 +203,10 @@ public class MenuAnimation : MonoBehaviour {
 
     public void Quit() //need baba
     {
-        //Application.Quit();
-        print("Ferme l'application et sauvegarde la progression avant ça peut etre");
+        //Un jour peut etre il faudra call une fonction plus propre :)
+        //courage
+        Application.Quit();
+        //print("Ferme l'application et sauvegarde la progression avant ça peut etre");
     }
 
     public void Read() // quand on clique sur le joueur et qu'un message a été reçu
@@ -210,6 +216,12 @@ public class MenuAnimation : MonoBehaviour {
         SwitchBottle();
     }
 
+
+    /// <summary>
+    /// Sets the message's text, launch the fade in of the text, then show the button to close the message 
+    /// </summary>
+    /// <param name="_message">  This is the message the player will be able to read</param>
+    /// <returns></returns>
     public IEnumerator Reading(string _message)
     {
         message.text = _message;
@@ -219,6 +231,7 @@ public class MenuAnimation : MonoBehaviour {
         StartCoroutine(FadeIn(messageConfirmation));
 
     }
+
     public void FinishedReading()
     {
     
