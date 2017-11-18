@@ -64,7 +64,7 @@ public class TransparentWindow : MonoBehaviour
         Resolution resolution = Screen.resolutions[Screen.resolutions.Length - 1];
 
         this.XPosition = resolution.width - this.Width * 2;
-        this.YPosition = resolution.height - this.Height * 2;
+        this.YPosition = resolution.height - this.Height * 2 -50;
 
 #if !UNITY_EDITOR
         this.SetWindowStats();
