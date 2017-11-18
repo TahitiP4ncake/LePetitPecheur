@@ -5,17 +5,30 @@ using UnityEngine.EventSystems;// Required when using Event data.
 
 public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler// required interface when using the OnPointerEnter method.
 {
+    public enum actionList
+    {
+        Quit,
+        Confirmation,
+        Menu,
+        MessageFinished,
+        Bottle,
+        Help,
+        Credit,
+        HelpOver,
+        CreditOver
+    }
+
+    public actionList action;
 
     public MenuAnimation menu;
 
-    public string actionSelected;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (actionSelected != "Quit" && actionSelected != "Confirmation" && actionSelected!="Menu" && actionSelected != "MessageFinished")
-            menu.Show(actionSelected);
+        if (action != actionList.Quit && action != actionList.Confirmation && action!= actionList.Menu && action != actionList.MessageFinished)
+            menu.Show(action.ToString());
         //Debug.Log(actionSelected);
-        if(actionSelected =="Quit")
+        if(action == actionList.Quit)
         {
             menu.timer = 0;
         }
@@ -24,23 +37,23 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
 
-        menu.Hide(actionSelected);
+        menu.Hide(action.ToString());
         //Debug.Log("The cursor exited the selectable UI element.");
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(actionSelected =="Quit" || actionSelected=="Menu" )
-        menu.Show(actionSelected);
+        if(action == actionList.Quit || action== actionList.Menu )
+        menu.Show(action.ToString());
 
-        if (actionSelected == "Confirmation")
+        if (action == actionList.Confirmation)
             menu.Quit();
 
-        if (actionSelected == "Bottle")
+        if (action == actionList.Bottle)
         {
             menu.Read();
             
         }
-        if( actionSelected == "MessageFinished")
+        if( action == actionList.MessageFinished)
         {
             menu.FinishedReading();
         }
