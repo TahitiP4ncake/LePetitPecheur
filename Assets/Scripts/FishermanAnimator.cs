@@ -6,7 +6,8 @@ public enum AnimationState
 {
     Hook,
     MessageOn,
-    MessageOff
+    MessageOff,
+    RadioOn
 }
 
 public class FishermanAnimator : MonoBehaviour {
@@ -40,6 +41,8 @@ public class FishermanAnimator : MonoBehaviour {
 
     public Material bouteilleMaterial;
 
+    public ParticleSystem radioParticle;
+
     [Space]
 
     public GameManager manager;
@@ -65,25 +68,30 @@ public class FishermanAnimator : MonoBehaviour {
 	{
         DrawFil(); //line renderer fil de peche
 
+
+        //Debug inputs.
+
         /*
 		if(Input.GetKeyDown(KeyCode.A))
         {
             PlayAnimation(AnimationState.Hook);
            
         }
-        */
+        
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            PlayAnimation(AnimationState.MessageOn);
+            PlayAnimation(AnimationState.RadioOn);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayAnimation(AnimationState.MessageOff);
         }
+        */
 
         Tilt();
     }
+
 
     void Tilt()
     {
@@ -184,6 +192,18 @@ public class FishermanAnimator : MonoBehaviour {
         bouchon.SetActive(true);
         message.SetActive(true);
     }
+
+    void RadioOn()
+    {
+        //La faut lancer le morceau de musique 
+
+        // COUCOU BAPTISTE !!
+
+        //<3
+
+        radioParticle.Play(); //A stopper quand le morceau est finis.
+    }
+
 
     #endregion
 

@@ -1182,8 +1182,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872339901914980}
-  m_LocalRotation: {x: 0.011193541, y: -0.47795975, z: 0.013894258, w: 0.87820053}
-  m_LocalPosition: {x: -0.202, y: 0.029, z: -0.103}
+  m_LocalRotation: {x: 0.026875356, y: -0.47831297, z: 0.0075012445, w: 0.87774605}
+  m_LocalPosition: {x: -0.199, y: 0.155, z: 0.082}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4657372070563566}
@@ -1193,7 +1193,7 @@ Transform:
   - {fileID: 4833094400228758}
   m_Father: {fileID: 4494184701767078}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 1.8880001, y: -57.101, z: 0.786}
+  m_LocalEulerAnglesHint: {x: 3.1160002, y: -57.194004, z: -0.72}
 --- !u!4 &4372687332424234
 Transform:
   m_ObjectHideFlags: 1
@@ -2505,6 +2505,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   menu: {fileID: 0}
   bouteilleMaterial: {fileID: 2100000, guid: 396bc67987650a0429ddaafc592ffece, type: 2}
+  radioParticle: {fileID: 198341271664849610}
   manager: {fileID: 0}
   messageToDisplay: 
 --- !u!120 &120266471246214276
@@ -3299,7 +3300,7 @@ ParticleSystem:
   simulationSpeed: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
