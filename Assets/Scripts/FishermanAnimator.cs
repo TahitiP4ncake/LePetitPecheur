@@ -38,6 +38,10 @@ public class FishermanAnimator : MonoBehaviour {
 
     [Space]
 
+    public Material bouteilleMaterial;
+
+    [Space]
+
     public GameManager manager;
 
     public string messageToDisplay;
@@ -101,6 +105,11 @@ public class FishermanAnimator : MonoBehaviour {
         canneFalse.transform.SetParent(canneTrue.transform);
         canneTrue.SetActive(true);
         canneFalse.SetActive(false);
+
+
+        //faire lerper la canne de sa position à sa main
+        //ou alors cleaner l'anim
+        // :)
     }
 
      void CanneOff()
@@ -129,6 +138,8 @@ public class FishermanAnimator : MonoBehaviour {
         bouteilleTrue.SetActive(true);
         bouchon.SetActive(true);
         message.SetActive(true);
+
+        //StartCoroutine(FadeBottle(true));
     }
 
     /// <summary>
@@ -140,7 +151,10 @@ public class FishermanAnimator : MonoBehaviour {
         bouchon.SetActive(false);
         message.SetActive(false);
 
+
         manager.NotBusyAnymore();
+
+        //StartCoroutine(FadeBottle(false));
     }
 
     /// <summary>
@@ -176,5 +190,58 @@ public class FishermanAnimator : MonoBehaviour {
     void Reading()
     {
         StartCoroutine(menu.Reading(messageToDisplay));
+    }
+
+    IEnumerator FadeBottle(bool on)
+    {
+
+        float _opacity = bouteilleMaterial.GetFloat("_Opacity");
+
+        switch (on)
+        {
+            case true:
+
+                bouteilleMaterial.SetFloat("_Opacity", 0);
+
+                while (bouteilleMaterial.GetFloat("_Opacity")<.28f)
+                {
+                    print(_opacity);
+                    _opacity += Time.deltaTime;
+
+                    bouteilleMaterial.SetFloat("_Opacity", _opacity);
+                    yield return null;
+                }
+
+                bouteilleMaterial.SetFloat("_Opacity", .28f);
+
+                bouteilleTrue.SetActive(true);
+                bouchon.SetActive(true);
+                message.SetActive(true);
+
+
+                break;
+
+            case false:
+                print("je cache la bouteille");
+
+                while (bouteilleMaterial.GetFloat("_Opacity") > 0)
+                {
+                    _opacity -= Time.deltaTime;
+
+                    bouteilleMaterial.SetFloat("_Opacity", _opacity );
+                    yield return null;
+                }
+
+                bouteilleMaterial.SetFloat("_Opacity", 0);
+
+                bouteilleTrue.SetActive(false);
+                bouchon.SetActive(false);
+                message.SetActive(false);
+
+
+                manager.NotBusyAnymore();
+
+                break;
+        }
     }
 }
