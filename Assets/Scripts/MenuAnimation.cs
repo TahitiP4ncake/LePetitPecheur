@@ -16,7 +16,8 @@ public class MenuAnimation : MonoBehaviour {
 
     #region Texts
 
-    public GameObject menuHidden;
+    public Animator dotAnim;
+
     public GameObject menuVisible;
 
     bool visible;
@@ -64,6 +65,22 @@ public class MenuAnimation : MonoBehaviour {
         message.color = new Color(1, 1, 1, 0);
     }
 
+    void Update()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = 0;
+
+                SwitchMenu();
+            }
+        }
+
+        
+    }
+
     IEnumerator WaitBeforeClosingMenu()
     {
         while(timer>0)
@@ -86,21 +103,22 @@ public class MenuAnimation : MonoBehaviour {
             case false:
                // print("faux");
                 visible = true;
-                menuHidden.SetActive(false);
+
+                dotAnim.SetTrigger("Expand");
+
                 foreach (TextMeshProUGUI _text in texts)
                 {
-                    StartCoroutine(FadeIn(_text));
+                    StartCoroutine(FadeIn(_text)); //Ajouter un yield avant le fade in des textes le temps que les points bougent.
                 }
-                menuVisible.SetActive(true);
-                for (int i = 0; i < 3; i++)
-                {
-                    StartCoroutine(DotOn(i));
-                }
-                timer = timerMax;
 
-                StartCoroutine(WaitBeforeClosingMenu());
+                menuVisible.SetActive(true);
+
+                //timer = timerMax;
+
+                //StartCoroutine(WaitBeforeClosingMenu());
 
                 break;
+
             case true:
                 
                 visible = false;
@@ -114,10 +132,6 @@ public class MenuAnimation : MonoBehaviour {
 
                 StartCoroutine(CloseMenu());  //Delay de la fermeture du menu
 
-                for (int i = 0; i < 3; i++)
-                {
-                    StartCoroutine(DotOff(i));
-                }
 
                 break;
         }
@@ -311,7 +325,6 @@ public class MenuAnimation : MonoBehaviour {
     {
         yield return new WaitForSeconds(.3f);
         timer = 0;
-        menuHidden.SetActive(true);
-        menuVisible.SetActive(false);
+        dotAnim.SetTrigger("Reduce");
     }
 }

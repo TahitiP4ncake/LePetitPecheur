@@ -36,8 +36,9 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
-        menu.Hide(action.ToString());
+        print(action);
+        if(action!=actionList.Menu && action != actionList.Bottle && action != actionList.MessageFinished)
+            menu.Hide(action.ToString());
         //Debug.Log("The cursor exited the selectable UI element.");
     }
     public void OnPointerClick(PointerEventData eventData)
