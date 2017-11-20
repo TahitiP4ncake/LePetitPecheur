@@ -15,7 +15,8 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Help,
         Credit,
         HelpOver,
-        CreditOver
+        CreditOver,
+		Radio
     }
 
     public actionList action;

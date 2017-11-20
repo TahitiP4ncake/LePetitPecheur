@@ -112,8 +112,7 @@ public class MenuAnimation : MonoBehaviour {
 
 			yield return null;
 		}
-
-		print ("Start Game");
+			
 	}
 
 
