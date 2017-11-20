@@ -209,7 +209,7 @@ public class FishermanAnimator : MonoBehaviour {
         // COUCOU BAPTISTE !!
 
         //<3
-		AudioSource _source = Harmony.SetSource ("song1");
+		AudioSource _source = Harmony.SetSource ("song2");
 
 		Harmony.Play (_source);
 
