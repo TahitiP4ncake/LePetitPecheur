@@ -69,6 +69,11 @@ public class FishermanAnimator : MonoBehaviour {
         DrawFil(); //line renderer fil de peche
 
 
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			PlayAnimation(AnimationState.RadioOn);
+		}
+
         //Debug inputs.
 
         /*
@@ -147,6 +152,10 @@ public class FishermanAnimator : MonoBehaviour {
         bouchon.SetActive(true);
         message.SetActive(true);
 
+		AudioSource _source = Harmony.SetSource ("waterDrop");
+
+		Harmony.Play (_source);
+
         //StartCoroutine(FadeBottle(true));
     }
 
@@ -200,6 +209,9 @@ public class FishermanAnimator : MonoBehaviour {
         // COUCOU BAPTISTE !!
 
         //<3
+		AudioSource _source = Harmony.SetSource ("song1");
+
+		Harmony.Play (_source);
 
         radioParticle.Play(); //A stopper quand le morceau est finis.
     }
