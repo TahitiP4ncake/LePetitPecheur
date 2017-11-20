@@ -105,6 +105,8 @@ ModelImporter:
     2300010: Canne
     2300012: Message
     2300014: Shape
+    2300016: Base
+    2300018: veste
     3300000: //RootNode
     3300002: veste001
     3300004: Line001
@@ -113,6 +115,8 @@ ModelImporter:
     3300010: Canne
     3300012: Message
     3300014: Shape
+    3300016: Base
+    3300018: veste
     4300000: Base
     4300002: veste001
     4300004: veste
@@ -128,6 +132,7 @@ ModelImporter:
     7400006: Fisherman@MessageOn
     7400008: Fisherman@MessageIdle
     7400010: Fisherman@MessageOff
+    7400012: Fisherman@RadioOn
     9500000: //RootNode
     13700000: Base
     13700002: veste
@@ -235,7 +240,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4575644
+      - time: 0.43938258
         functionName: BouteilleOn
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
@@ -279,7 +284,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.12177112
+      - time: 0.14147556
         functionName: CanneOff
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
@@ -339,7 +344,7 @@ ModelImporter:
       name: Fisherman@MessageOff
       takeName: Take 001
       firstFrame: 885
-      lastFrame: 1007
+      lastFrame: 1050
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -359,7 +364,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7306276
+      - time: 0.5138788
         functionName: CanneOn
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
@@ -367,8 +372,44 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.81549776
+      - time: 0.9041677
         functionName: BouteilleOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fisherman@RadioOn
+      takeName: Take 001
+      firstFrame: 1100
+      lastFrame: 1270
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.18681344
+        functionName: RadioOn
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
           type: 3}

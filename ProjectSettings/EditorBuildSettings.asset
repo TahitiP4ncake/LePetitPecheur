@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 24a0faf517d2b464d8538f0d1226dac3
+  - enabled: 0
+    path: Assets/Scenes/Game(dorianTest).unity
+    guid: 514c58690ad8bd4438b5c22bc0187eb6

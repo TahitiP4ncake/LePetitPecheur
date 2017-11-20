@@ -6,7 +6,8 @@ public enum AnimationState
 {
     Hook,
     MessageOn,
-    MessageOff
+    MessageOff,
+    RadioOn
 }
 
 public class FishermanAnimator : MonoBehaviour {
@@ -38,6 +39,12 @@ public class FishermanAnimator : MonoBehaviour {
 
     [Space]
 
+    public Material bouteilleMaterial;
+
+    public ParticleSystem radioParticle;
+
+    [Space]
+
     public GameManager manager;
 
     public string messageToDisplay;
@@ -61,25 +68,35 @@ public class FishermanAnimator : MonoBehaviour {
 	{
         DrawFil(); //line renderer fil de peche
 
+
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			PlayAnimation(AnimationState.RadioOn);
+		}
+
+        //Debug inputs.
+
         /*
 		if(Input.GetKeyDown(KeyCode.A))
         {
             PlayAnimation(AnimationState.Hook);
            
         }
-        */
+        
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            PlayAnimation(AnimationState.MessageOn);
+            PlayAnimation(AnimationState.RadioOn);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayAnimation(AnimationState.MessageOff);
         }
+        */
 
         Tilt();
     }
+
 
     void Tilt()
     {
@@ -101,6 +118,11 @@ public class FishermanAnimator : MonoBehaviour {
         canneFalse.transform.SetParent(canneTrue.transform);
         canneTrue.SetActive(true);
         canneFalse.SetActive(false);
+
+
+        //faire lerper la canne de sa position à sa main
+        //ou alors cleaner l'anim
+        // :)
     }
 
      void CanneOff()
@@ -129,6 +151,12 @@ public class FishermanAnimator : MonoBehaviour {
         bouteilleTrue.SetActive(true);
         bouchon.SetActive(true);
         message.SetActive(true);
+
+		AudioSource _source = Harmony.SetSource ("waterDrop");
+
+		Harmony.Play (_source);
+
+        //StartCoroutine(FadeBottle(true));
     }
 
     /// <summary>
@@ -140,7 +168,10 @@ public class FishermanAnimator : MonoBehaviour {
         bouchon.SetActive(false);
         message.SetActive(false);
 
+
         manager.NotBusyAnymore();
+
+        //StartCoroutine(FadeBottle(false));
     }
 
     /// <summary>
@@ -171,10 +202,78 @@ public class FishermanAnimator : MonoBehaviour {
         message.SetActive(true);
     }
 
+    void RadioOn()
+    {
+        //La faut lancer le morceau de musique 
+
+        // COUCOU BAPTISTE !!
+
+        //<3
+		AudioSource _source = Harmony.SetSource ("song2");
+
+		Harmony.Play (_source);
+
+        radioParticle.Play(); //A stopper quand le morceau est finis.
+    }
+
+
     #endregion
 
     void Reading()
     {
         StartCoroutine(menu.Reading(messageToDisplay));
+    }
+
+    IEnumerator FadeBottle(bool on)
+    {
+
+        float _opacity = bouteilleMaterial.GetFloat("_Opacity");
+
+        switch (on)
+        {
+            case true:
+
+                bouteilleMaterial.SetFloat("_Opacity", 0);
+
+                while (bouteilleMaterial.GetFloat("_Opacity")<.28f)
+                {
+                    print(_opacity);
+                    _opacity += Time.deltaTime;
+
+                    bouteilleMaterial.SetFloat("_Opacity", _opacity);
+                    yield return null;
+                }
+
+                bouteilleMaterial.SetFloat("_Opacity", .28f);
+
+                bouteilleTrue.SetActive(true);
+                bouchon.SetActive(true);
+                message.SetActive(true);
+
+
+                break;
+
+            case false:
+                print("je cache la bouteille");
+
+                while (bouteilleMaterial.GetFloat("_Opacity") > 0)
+                {
+                    _opacity -= Time.deltaTime;
+
+                    bouteilleMaterial.SetFloat("_Opacity", _opacity );
+                    yield return null;
+                }
+
+                bouteilleMaterial.SetFloat("_Opacity", 0);
+
+                bouteilleTrue.SetActive(false);
+                bouchon.SetActive(false);
+                message.SetActive(false);
+
+
+                manager.NotBusyAnymore();
+
+                break;
+        }
     }
 }

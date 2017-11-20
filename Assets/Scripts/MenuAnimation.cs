@@ -51,6 +51,13 @@ public class MenuAnimation : MonoBehaviour {
 
     public TextMeshProUGUI messageConfirmation;
 
+	public TextMeshProUGUI screenTitleText;
+
+	public Image dot1;
+	public Image dot2;
+	public Image dot3;
+
+
     #endregion
 
     public FishermanAnimator fisher;
@@ -62,8 +69,53 @@ public class MenuAnimation : MonoBehaviour {
         SwitchMenu();
         */
 
+		StartCoroutine(ScreenTitle ());
+
         message.color = new Color(1, 1, 1, 0);
     }
+
+	IEnumerator ScreenTitle()
+	{
+
+
+		screenTitleText.color = Color.white;
+
+		dot1.color = new Color (1, 1, 1, 0);
+		dot2.color = new Color (1, 1, 1, 0);
+		dot3.color = new Color (1, 1, 1, 0);
+
+		yield return new WaitForSeconds (1.5f);
+
+		float _opacity = 1;
+
+		while (_opacity>0) 
+		{
+			screenTitleText.color = new Color (1, 1, 1, _opacity);
+
+			_opacity -= Time.deltaTime;
+
+			yield return null;
+		}
+
+		screenTitleText.color = new Color (1, 1, 1, 0);
+
+		_opacity = 0;
+
+		while (_opacity<1) 
+		{
+			dot1.color = new Color (1, 1, 1, _opacity);
+			dot2.color = new Color (1, 1, 1, _opacity);
+			dot3.color = new Color (1, 1, 1, _opacity);
+
+
+			_opacity += Time.deltaTime*2;
+
+			yield return null;
+		}
+			
+	}
+
+
 
     void Update()
     {
