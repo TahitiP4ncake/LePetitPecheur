@@ -57,6 +57,10 @@ public class MenuAnimation : MonoBehaviour {
 	public Image dot2;
 	public Image dot3;
 
+    public GameObject dotPanel;
+
+    public TextMeshProUGUI actionText;
+
 
     #endregion
 
@@ -79,6 +83,8 @@ public class MenuAnimation : MonoBehaviour {
 
 
 		screenTitleText.color = Color.white;
+
+        //Faudra changer pour un material pour réduire le poid du fade.
 
 		dot1.color = new Color (1, 1, 1, 0);
 		dot2.color = new Color (1, 1, 1, 0);
@@ -378,5 +384,98 @@ public class MenuAnimation : MonoBehaviour {
         yield return new WaitForSeconds(.3f);
         timer = 0;
         dotAnim.SetTrigger("Reduce");
+    }
+
+
+    //faire une fonction qui lance la coroutine, et faire que ça marche demain :)
+
+    public IEnumerator HideMenu(bool _state, string _text)
+    {
+        float _opacity;
+
+        Color _color = new Color(1, 1, 1, 1);
+
+        switch (_state)
+        {
+            case true:
+
+                 _opacity = 1;
+
+                while (_opacity > 0)
+                {
+                    _color.a = _opacity;
+
+                    dot1.color = _color;
+                    dot2.color = _color;
+                    dot3.color = _color;
+
+                    _opacity -= Time.deltaTime * 2;
+
+                    yield return null;
+                }
+
+                dotPanel.SetActive(false);
+
+                _opacity = 0;
+
+                _color.a = _opacity;
+
+                actionText.color = _color;
+
+                actionText.text = _text;
+
+                print(_text);
+
+                while (_opacity<1)
+                {
+                    _color.a = _opacity;
+
+                    actionText.color = _color;
+
+                    _opacity += Time.deltaTime * 2;
+
+                    yield return null;
+                }
+
+
+            break;
+
+            case false:
+
+                _opacity = 1;
+
+                while (_opacity > 0)
+                {
+                    _color.a = _opacity;
+
+                    actionText.color = _color;
+
+                    _opacity -= Time.deltaTime * 2;
+
+                    yield return null;
+                }
+
+
+                _opacity = 0;
+
+                dotPanel.SetActive(true);
+
+                while (_opacity < 1)
+                {
+                    _color.a = _opacity;
+
+                    dot1.color = _color;
+                    dot2.color = _color;
+                    dot3.color = _color;
+
+
+                    _opacity += Time.deltaTime * 2;
+
+                    yield return null;
+                }
+
+                
+                break;
+        }
     }
 }

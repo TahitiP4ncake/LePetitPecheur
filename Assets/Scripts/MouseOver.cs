@@ -23,13 +23,23 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public MenuAnimation menu;
 
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (action != actionList.Quit && action != actionList.Confirmation && action!= actionList.Menu && action != actionList.MessageFinished)
+        if (action != actionList.Quit && action != actionList.Confirmation && action!= actionList.Menu && action != actionList.MessageFinished && action != actionList.Radio)
             menu.Show(action.ToString());
         //Debug.Log(actionSelected);
-        if(action == actionList.Quit)
+
+        if(action ==actionList.Bottle )
+        {
+            StartCoroutine(menu.HideMenu(true,"read"));
+        }
+
+        if (action == actionList.Radio)
+        {
+            StartCoroutine(menu.HideMenu(true, "listen"));
+        }
+
+        if (action == actionList.Quit)
         {
             menu.timer = 0;
         }
@@ -38,8 +48,14 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         
-        if(action!=actionList.Menu && action != actionList.Bottle && action != actionList.MessageFinished)
+        if(action!=actionList.Menu && action != actionList.Bottle && action != actionList.MessageFinished && action!=actionList.Radio)
             menu.Hide(action.ToString());
+
+        if(action == actionList.Bottle || action == actionList.Radio)
+        {
+            StartCoroutine(menu.HideMenu(false, ""));
+        }
+
         //Debug.Log("The cursor exited the selectable UI element.");
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -53,8 +69,14 @@ public class MouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (action == actionList.Bottle)
         {
             menu.Read();
-            
         }
+
+        if(action ==actionList.Radio)
+        {
+            menu.fisher.PlayAnimation(AnimationState.RadioOn);
+        }
+
+
         if( action == actionList.MessageFinished)
         {
             menu.FinishedReading();
