@@ -10,11 +10,6 @@ public class UIMessage : MonoBehaviour {
 
     public Text text;
 
-    public void DisplayTextZone()
-    {
-
-    }
-
     public void FillText(string _text)
     {
         text.text = _text;
