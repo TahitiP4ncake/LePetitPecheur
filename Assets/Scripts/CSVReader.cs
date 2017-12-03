@@ -6,10 +6,9 @@ using System.Text.RegularExpressions;
 
 public class CSVReader
 {
-	static string SPLIT_RE = @"\t";
-	static string LINE_SPLIT_RE = @"\n"; // new line || new tab
-	static char[] TRIM_CHARS = { '\"' };
 
+	static string LINE_SPLIT_RE = @"\n"; // new line || new tab
+    
 	public static List<string> Read( string file )
 	{
         // The final list empty

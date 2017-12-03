@@ -424,7 +424,6 @@ public class MenuAnimation : MonoBehaviour {
 
                 actionText.text = _text;
 
-                print(_text);
 
                 while (_opacity<1)
                 {

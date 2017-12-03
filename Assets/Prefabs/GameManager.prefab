@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4456114159306868}
   - component: {fileID: 114798593867717626}
-  - component: {fileID: 114410359377904854}
+  - component: {fileID: 114080928411097910}
+  - component: {fileID: 114225279839707638}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114410359377904854
+--- !u!114 &114080928411097910
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,9 +50,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1423559128376716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643c885e75ca47b4b8b61042f75b249c, type: 3}
+  m_Script: {fileID: 11500000, guid: d84287c3b6f860c40949f8a9d48ebc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 114798593867717626}
+--- !u!114 &114225279839707638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1423559128376716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c16e1a297f7a5c4cb26cc8b4a3dc9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 114798593867717626}
+  allMessages: []
+  randomMessages: []
 --- !u!114 &114798593867717626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,6 +79,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5aac37bce57b6d4c87ac479415ebf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveSystem: {fileID: 114080928411097910}
+  messageManager: {fileID: 114225279839707638}
   fisherAnimator: {fileID: 0}
-  allMessages: []
-  randomMessages: []
+  saveFile:
+    nbrMessages: 0
+    year: 0
+    month: 0
+    day: 0
+    hours: 0
+    minutes: 0
+    secondes: 0
+    timerMessage: 0
+    timerObject: 0
+    canHaveMessage: 0
+    canHaveObject: 0
+    randomMessages: []
