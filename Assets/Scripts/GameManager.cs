@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        // Initialize system
         saveSystem.InitializeSaveSystem();
 
         messageManager.InitializeMessages();
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator TimePassed()
     {
+
+        yield return new WaitForSeconds(2);
+
         while(true)
         {
             yield return new WaitForSeconds(1);
@@ -103,6 +107,23 @@ public class GameManager : MonoBehaviour {
         isBusy = false;
     }
 
+
+    public static GameManager instance = null;
+
+    void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null)
+
+            //if not, set instance to this
+            instance = this;
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+    }
 
 
 }

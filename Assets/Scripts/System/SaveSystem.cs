@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour {
     
-    [Header("Managers")]
-    public GameManager gameManager;
 
     public void InitializeSaveSystem()
     {
@@ -18,18 +16,18 @@ public class SaveSystem : MonoBehaviour {
 
         if (_saveFile == "")
         {
-            gameManager.saveFile = new SaveFile();
+            GameManager.instance.saveFile = new SaveFile();
         }
         else
         {
-            gameManager.saveFile = JsonUtility.FromJson<SaveFile>(_saveFile);
+            GameManager.instance.saveFile = JsonUtility.FromJson<SaveFile>(_saveFile);
         }
     }
 
     public void SaveData()
     {
         string _saveFile;
-        _saveFile = JsonUtility.ToJson(gameManager.saveFile);
+        _saveFile = JsonUtility.ToJson(GameManager.instance.saveFile);
 
         PlayerPrefs.SetString("Save",_saveFile);
 

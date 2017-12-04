@@ -16,6 +16,7 @@ public class FishermanAnimator : MonoBehaviour {
 
     public LineRenderer fil;
 
+    [Header("Objects")]
     public GameObject filHead;
     public GameObject filTail;
 
@@ -30,12 +31,13 @@ public class FishermanAnimator : MonoBehaviour {
 
     public GameObject radeau;
 
+    [Space()]
+
+    [Header("Tilting")]
     Vector3 origin;
 
     public AnimationCurve x;
     public AnimationCurve z;
-
-    public MenuAnimation menu;
 
     [Space]
 
@@ -45,9 +47,14 @@ public class FishermanAnimator : MonoBehaviour {
 
     [Space]
 
-    public GameManager manager;
-
     public string messageToDisplay;
+
+    void Start()
+    {
+        origin = radeau.transform.eulerAngles;
+        BouteilleOff();
+    }
+
 
     public void PlayAnimation(AnimationState _animation, string _message ="")
     {
@@ -59,40 +66,10 @@ public class FishermanAnimator : MonoBehaviour {
         }
     }
 
-    void Start()
-    {
-        origin = radeau.transform.eulerAngles;
-        BouteilleOff();
-    }
+   
     void Update () 
 	{
         DrawFil(); //line renderer fil de peche
-
-
-		if (Input.GetKeyDown(KeyCode.Z))
-		{
-			PlayAnimation(AnimationState.RadioOn);
-		}
-
-        //Debug inputs.
-
-        /*
-		if(Input.GetKeyDown(KeyCode.A))
-        {
-            PlayAnimation(AnimationState.Hook);
-           
-        }
-        
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            PlayAnimation(AnimationState.RadioOn);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PlayAnimation(AnimationState.MessageOff);
-        }
-        */
 
         Tilt();
     }
@@ -169,7 +146,7 @@ public class FishermanAnimator : MonoBehaviour {
         message.SetActive(false);
 
 
-        manager.NotBusyAnymore();
+        GameManager.instance.NotBusyAnymore();
 
         //StartCoroutine(FadeBottle(false));
     }
@@ -180,7 +157,7 @@ public class FishermanAnimator : MonoBehaviour {
     /// </summary>
     void StockOn()
     {
-        menu.SwitchBottle();
+        //menu.SwitchBottle();
         bouteilleFalse.transform.position = bouteilleTrue.transform.position;
         bouteilleFalse.transform.rotation = bouteilleTrue.transform.rotation;
         bouteilleFalse.transform.SetParent(null);
@@ -221,7 +198,7 @@ public class FishermanAnimator : MonoBehaviour {
 
     void Reading()
     {
-        StartCoroutine(menu.Reading(messageToDisplay));
+       // StartCoroutine(menu.Reading(messageToDisplay));
     }
 
     IEnumerator FadeBottle(bool on)
@@ -271,7 +248,7 @@ public class FishermanAnimator : MonoBehaviour {
                 message.SetActive(false);
 
 
-                manager.NotBusyAnymore();
+                GameManager.instance.NotBusyAnymore();
 
                 break;
         }

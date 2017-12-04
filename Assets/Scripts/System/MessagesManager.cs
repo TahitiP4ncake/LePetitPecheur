@@ -5,8 +5,6 @@ using System;
 
 public class MessagesManager : MonoBehaviour {
 
-    public GameManager gameManager;
-
     [Header("Messages")]
     // All the messages in the .CSV
     public List<string> allMessages = new List<string>();
@@ -29,7 +27,7 @@ public class MessagesManager : MonoBehaviour {
         allMessages = CSVReader.Read("Messages");
 
         // If the .CSV change since the last time (aka new messages)
-        if (allMessages.Count != gameManager.saveFile.nbrMessages)
+        if (allMessages.Count != GameManager.instance.saveFile.nbrMessages)
         {
             ActualizeMessagesList();
         }
@@ -50,19 +48,19 @@ public class MessagesManager : MonoBehaviour {
     void ActualizeMessagesList()
     {
         // The list have less elements than the last time, reset it (that an odd behavior)
-        if (allMessages.Count < gameManager.saveFile.nbrMessages)
+        if (allMessages.Count < GameManager.instance.saveFile.nbrMessages)
         {
             ResetMessages(allMessages);
         }
         else
-        if (allMessages.Count > gameManager.saveFile.nbrMessages)
+        if (allMessages.Count > GameManager.instance.saveFile.nbrMessages)
         {
             // Add new messages to the possibilities
 
             List<string> _newMessages = new List<string>();
 
             // Fill the list with all the (fabulous) new messages add by the cuties developers
-            for (int i = gameManager.saveFile.nbrMessages; i < allMessages.Count; i++)
+            for (int i = GameManager.instance.saveFile.nbrMessages; i < allMessages.Count; i++)
             {
 
                 _newMessages.Add(allMessages[i]);
@@ -79,7 +77,7 @@ public class MessagesManager : MonoBehaviour {
             }
         }
 
-        gameManager.saveFile.nbrMessages = allMessages.Count;
+        GameManager.instance.saveFile.nbrMessages = allMessages.Count;
 
     }
 
