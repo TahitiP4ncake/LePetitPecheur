@@ -236,6 +236,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4494184701767078}
+  - component: {fileID: 95151008232954540}
   m_Layer: 0
   m_Name: Radeau
   m_TagString: Untagged
@@ -829,7 +830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1875888007113100
 GameObject:
   m_ObjectHideFlags: 1
@@ -1269,7 +1270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216544875030184}
   m_LocalRotation: {x: -0.076704636, y: -0.8851597, z: 0.24677385, w: 0.38692582}
-  m_LocalPosition: {x: 0.96, y: -0.99, z: 1.74}
+  m_LocalPosition: {x: 2.52, y: -0.99, z: 1.74}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4890309092584008}
@@ -2352,6 +2353,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1342894862034956}
   m_Mesh: {fileID: 4300006, guid: 7b8253ae7b4729a49ac1c9d927fe39d1, type: 3}
+--- !u!95 &95151008232954540
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216544875030184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b394941b0afb9ac42aa8fcb59a9df16d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95309758542171160
 Animator:
   serializedVersion: 3
@@ -2503,10 +2521,8 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 0
-  menu: {fileID: 0}
   bouteilleMaterial: {fileID: 2100000, guid: 396bc67987650a0429ddaafc592ffece, type: 2}
   radioParticle: {fileID: 198341271664849610}
-  manager: {fileID: 0}
   messageToDisplay: 
 --- !u!120 &120266471246214276
 LineRenderer:
@@ -2680,8 +2696,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 4835301855476006}
   m_AABB:
-    m_Center: {x: 0.0001437664, y: -0.14095497, z: 0.030088723}
-    m_Extent: {x: 0.7448847, y: 0.73073524, z: 0.7985673}
+    m_Center: {x: 0.00014352798, y: -0.1409545, z: 0.030088603}
+    m_Extent: {x: 0.7448847, y: 0.7307352, z: 0.7985672}
   m_DirtyAABB: 0
 --- !u!137 &137437213631001248
 SkinnedMeshRenderer:

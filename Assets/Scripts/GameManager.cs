@@ -58,7 +58,16 @@ public class GameManager : MonoBehaviour {
                 }
 
             }
+            else
+            {
+                saveFile.canHaveMessage = false;
 
+                isBusy = true;
+
+                SendNewMessage();
+            }
+
+            /* No objects for this version
             if (saveFile.canHaveObject == false)
             {
                 saveFile.timerObject++;
@@ -70,17 +79,7 @@ public class GameManager : MonoBehaviour {
                 }
 
             }
-
-            if (saveFile.canHaveMessage)
-            {
-                saveFile.canHaveMessage = false;
-
-                isBusy = true;
-
-                SendNewMessage();
-            }
-
-            if (saveFile.canHaveObject)
+            else
             {
                 saveFile.canHaveObject = false;
 
@@ -88,7 +87,7 @@ public class GameManager : MonoBehaviour {
 
                 messageManager.GetNewObject();
             }
-
+            */
         }
     }
 
@@ -100,14 +99,19 @@ public class GameManager : MonoBehaviour {
         saveSystem.SaveData();
     }
 
-   
-
     public void NotBusyAnymore()
     {
         isBusy = false;
     }
 
+    public void Quit()
+    {
+        saveSystem.SaveData();
+        StopAllCoroutines();
+        Application.Quit();
+    }
 
+    // Singleton
     public static GameManager instance = null;
 
     void Awake()
