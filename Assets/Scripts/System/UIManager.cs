@@ -59,22 +59,31 @@ public class UIManager : MonoBehaviour {
 
     #region Message
 
-    public void DisplayMessage(string _text)
+    public void DisplayMessage()
     {
+        StartCoroutine(C_DisplayMessage());
+    }
+
+    IEnumerator C_DisplayMessage()
+    {
+        GameManager.instance.fisherAnimator.PlayAnimation(AnimationState.MessageOn);
+        yield return new WaitForSeconds(4.20f);
+
         HideMenu();
 
-        messageText.text = _text;
+        messageText.text = GameManager.instance.messageManager.GetNewMessage();
         messageAnimator.SetTrigger("Appear");
 
-        Invoke("DisplayButtonOK", 2);
+        Invoke("DisplayButtonOK", 1);
     }
 
     public void CloseMessage()
     {
         messageAnimator.SetTrigger("Disappear");
 
+        GameManager.instance.fisherAnimator.PlayAnimation(AnimationState.MessageOff);
+        HideButtonOk();
         Invoke("DisplayMenu", 1);
-        Invoke("HideButtonOk", 2);
     }
 
     void DisplayButtonOK()
@@ -190,6 +199,8 @@ public class UIManager : MonoBehaviour {
 
     void Awake()
     {
+        Treasure treasure = new Treasure();
+
         //Check if instance already exists
         if (instance == null)
 

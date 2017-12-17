@@ -132,8 +132,9 @@ public class MessagesManager : MonoBehaviour {
             return false;
         }
 
-        //if (_seconds / (86400 * dayBeforeMessage) > 1)
-        if ((float)_seconds / 5f > 1f)
+
+        //if ((float)_seconds / 5f > 1f)
+        if (_seconds / (86400 * dayBeforeMessage) > 1)
         {
             return true;
         }

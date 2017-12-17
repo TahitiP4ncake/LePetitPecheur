@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
     void SendNewMessage()
     {
         // Send new message and play the animation
-        fisherAnimator.PlayAnimation(AnimationState.Hook, messageManager.GetNewMessage());
+        fisherAnimator.PlayAnimation(AnimationState.Hook);
 
         saveSystem.SaveData();
     }

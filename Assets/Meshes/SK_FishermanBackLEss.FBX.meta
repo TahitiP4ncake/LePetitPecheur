@@ -300,14 +300,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.968944
-        functionName: Reading
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e056ba9f64664a042a391118aa3d4662,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

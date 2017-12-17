@@ -45,9 +45,6 @@ public class FishermanAnimator : MonoBehaviour {
 
     public ParticleSystem radioParticle;
 
-    [Space]
-
-    public string messageToDisplay;
 
     void Start()
     {
@@ -59,14 +56,9 @@ public class FishermanAnimator : MonoBehaviour {
     }
 
 
-    public void PlayAnimation(AnimationState _animation, string _message ="")
+    public void PlayAnimation(AnimationState _animation)
     {
         anim.SetTrigger(_animation.ToString());
-
-        if (_message != "")
-        {
-            messageToDisplay = _message;
-        }
     }
 
    
@@ -148,6 +140,7 @@ public class FishermanAnimator : MonoBehaviour {
         message.SetActive(false);
 
 
+
         GameManager.instance.NotBusyAnymore();
 
         //StartCoroutine(FadeBottle(false));
@@ -175,10 +168,13 @@ public class FishermanAnimator : MonoBehaviour {
     {
         bouteilleFalse.transform.SetParent(bouteilleTrue.transform);
 
+        bouteilleFalse.GetComponent<Bottle>().OkToUse();
+
         bouteilleFalse.SetActive(false);
         bouteilleTrue.SetActive(true);
         bouchon.SetActive(true);
         message.SetActive(true);
+
     }
 
     void RadioOn()
