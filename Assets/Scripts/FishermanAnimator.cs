@@ -51,7 +51,10 @@ public class FishermanAnimator : MonoBehaviour {
 
     void Start()
     {
+        // To tilt the boat
         origin = radeau.transform.eulerAngles;
+
+        // Set up the bottles
         BouteilleOff();
     }
 
@@ -73,7 +76,6 @@ public class FishermanAnimator : MonoBehaviour {
 
         Tilt();
     }
-
 
     void Tilt()
     {
@@ -196,10 +198,6 @@ public class FishermanAnimator : MonoBehaviour {
 
     #endregion
 
-    void Reading()
-    {
-       // StartCoroutine(menu.Reading(messageToDisplay));
-    }
 
     IEnumerator FadeBottle(bool on)
     {
